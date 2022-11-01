@@ -4,7 +4,7 @@ from fastapi.responses import JSONResponse, PlainTextResponse
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import PlainTextResponse
 
-from calc import fibonacci
+from src.calc import fibonacci
 
 app = FastAPI()
 
@@ -29,9 +29,9 @@ def TooLargeResult_exception_handler(request: Request, exc: TooLargeResultExcept
 
 
 @app.get("/fib")
-def read_item(n: int = Query(gt=0)):
+def read_item(n: int = Query(ge=0)):
     fib = fibonacci.fib(n)
-    if math.log10(fib) + 1 > 4300:
+    if fib != 0 and math.log10(fib) + 1 > 4300:
         raise TooLargeResultException(name=n)
 
     return {"result": fib}
