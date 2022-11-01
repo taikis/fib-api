@@ -1,0 +1,15 @@
+version: '3'
+services:
+    fibonacci-server:
+        build:
+            context: ./fibonacci-server
+            dockerfile: Dockerfile
+        environment: 
+            TZ: Asia/Tokyo
+        volumes:
+            - ./fibonacci-server/code:/code
+        ports:
+            - 8000:8000
+        env_file:
+            - fibonacci-server/.env
+        tty: true
