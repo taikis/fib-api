@@ -9,7 +9,7 @@ services:
         volumes:
             - ./fibonacci-server/code:/code
         ports:
-            - 8000:8000
+            - 8080:8080
         env_file:
             - fibonacci-server/.env
         tty: true
