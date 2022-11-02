@@ -14,4 +14,4 @@
 
 ## 仕様
 
-API仕様については[ドキュメント](https://fib-api.taikis.jp)を参照
+API仕様については[ドキュメント](https://fib-api.taikis.jp/docs)を参照
