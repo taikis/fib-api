@@ -17,7 +17,7 @@ class TooLargeResultException(Exception):
 @app.exception_handler(TooLargeResultException)
 def TooLargeResult_exception_handler(request: Request, exc: TooLargeResultException):
     return JSONResponse(
-        status_code=400,
+        status_code=422,
         content={
             "detail": [
                 {
@@ -29,6 +29,7 @@ def TooLargeResult_exception_handler(request: Request, exc: TooLargeResultExcept
 
 
 @app.get("/fib", tags=['Calculation'])
+def get_fibonacci_number(n: int = Query(ge=0, lt= 100000)):
     """
     ### フィボナッチ数を返す
 

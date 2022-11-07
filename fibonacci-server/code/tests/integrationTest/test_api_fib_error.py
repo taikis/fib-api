@@ -10,7 +10,7 @@ client = TestClient(app)
 
 def test_get_fib_99999():
     response = client.get("/fib?n=99999")
-    assert response.status_code == 400
+    assert response.status_code == 422
     assert response.json() == {
         "detail": [
             {
@@ -19,6 +19,19 @@ def test_get_fib_99999():
         ]
     }
 
+def test_get_fib_100000():
+    response = client.get("/fib?n=100000")
+    assert response.status_code == 422
+    assert response.json() == {
+        "detail": [
+            {
+                "loc": ["query", "n"],
+                "msg": "ensure this value is less than 100000",
+                "type": "value_error.number.not_lt",
+                "ctx": {"limit_value": 100000},
+            }
+        ]
+    }
 
 # 異常クエリ
 
