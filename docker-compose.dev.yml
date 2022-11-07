@@ -3,7 +3,7 @@ services:
     fibonacci-server:
         build:
             context: ./fibonacci-server
-            dockerfile: Dockerfile
+            dockerfile: Dockerfile.dev
         environment: 
             TZ: Asia/Tokyo
         volumes:
