@@ -1,18 +1,23 @@
 build:
-	docker compose build 
+	docker compose -f docker-compose.dev.yml build 
 up:
-	docker compose up -d
+	docker compose -f docker-compose.dev.yml up -d
 start:
-	docker compose start
+	docker compose -f docker-compose.dev.yml start
 stop:
-	docker compose stop
+	docker compose -f docker-compose.dev.yml stop
 down:
-	docker compose down
+	docker compose -f docker-compose.dev.yml down
 restart:
-	docker compose restart
+	docker compose -f docker-compose.dev.yml restart
 logs:
-	docker compose logs -f
+	docker compose -f docker-compose.dev.yml logs -f
 ps:
-	docker compose ps
+	docker compose -f docker-compose.dev.yml ps
 shell:
-	docker compose exec fibonacci-server bash
+	docker compose -f docker-compose.dev.yml exec fibonacci-server bash
+test:
+	docker compose -f docker-compose.dev.yml exec fibonacci-server pytest
+deploy:
+	cd fibonacci-server
+	gcloud run deploy
